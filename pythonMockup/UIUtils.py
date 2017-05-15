@@ -11,16 +11,21 @@ def start():
 
 	print("J-SUD's crappy organizer prototype\n v0.0.0.0.001")
 
+	# If there are saves and we want to use them
 	if os.path.exists("saves/data.dat"):
 		inp = input("Use saved data? (will overwrite if no) y/n: ")
 		if inp == "y":
 			clearScr()
 			with open("saves/data.dat", "r+b") as f:
 				return pickle.load(f)
-	else:
+	# If there are no saves
+	else: 
 		input("Press enter to continue:")
-		clearScr()
-		return Organizer()
+
+	# No saves or user doesn't care
+	clearScr()
+	org = Organizer()
+	return org
 	
 
 # This is the main router for choices, and returns when exit is called
